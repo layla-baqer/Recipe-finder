@@ -1,0 +1,26 @@
+<div class="search-container">
+
+    <div class="home-title"><h1>Find Your Recipe</h1></div>
+
+    <div class="search-input-container">
+        <form method="GET" action="/foods/search">
+            <label class="search-label" for="recipeResult">Search for Recipes</label>
+            <input type="text" name="q" autocomplete="off" class="search-input" placeholder="Recipe name">
+            <button class="search-button" type="submit">Search</button>
+        </form>
+    </div>
+
+</div>
+
+<div class="results-container">
+    <% if(foods) { %>
+        <% foods.forEach((food, idx) => { %>
+            <div class="results">
+                <a href="/foods/<%= food.recipe.label %>">
+                    <img class="results-image" src="<%= food.recipe.image %>" alt="image">
+                    <span id="results-image-label"><%= food.recipe.label %></span>
+                </a>
+            </div>
+        <% }) %>
+    <% } %>
+</div>

@@ -1,0 +1,33 @@
+<div class="recipe-outer-container">
+    <div class="left-container">
+
+    </div>
+    <div class="center-container">
+        <h3 class="recipe-title"><%= food.recipe.label %></h3>
+
+        <img class="recipe-img" src="<%= food.recipe.image %>" alt="image">
+
+        <% food.recipe.ingredientLines.forEach((ingredient) => { %>
+            <% // a few undefined values were showing so if condition will make sure all displayed text is meaningful %>
+            <% if(ingredient != 'undefined') { %>
+                <div id="ingredients">
+                    <ul>
+                        <li><%= ingredient %></li>
+                    </ul>
+                </div>
+            <% } %>
+        <% }) %>
+    </div>
+
+    <div class="right-container">
+
+        <% // name is the key in the returned object %>
+        <form method="POST" action="/foods/recipes">
+            <input hidden type="text" name="name" autocomplete="off" value="<%= food.recipe.label %>">
+            <button class="save-button" type="submit">Save</button>
+        </form>
+
+        <button class="calories"><%= Math.floor(food.recipe.calories) %> cal</button>
+
+    </div>
+</div>

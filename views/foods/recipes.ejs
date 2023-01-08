@@ -1,0 +1,19 @@
+<div class="saved-container">
+    <h2 class="saved-title">To Cook Recipes</h2>
+
+    <!-- <a href="/foods">Home</a> -->
+
+    <% allFoods.forEach((food, idx) => { %>
+        <% if(food.name != 'undefined') { %>
+            <div class="saved-item">
+                <a href="/foods/<%= food.name %>"><%= food.name %></a>
+
+                <form method="POST" action="/foods/recipes/<%= food.name %>?_method=DELETE">
+                    <input hidden type="text" name="name" autocomplete="off" value="delete">
+                    <button class="delete-button" type="submit">Delete</button>
+                </form>
+            </div>
+        <% } %>
+    <% }) %>
+
+</div>
